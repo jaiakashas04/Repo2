@@ -26,7 +26,8 @@ gidy-audit-dashboard/
 cd server
 npm install
 cp .env.example .env      # then fill in MONGODB_URI
-npm run dev                # nodemon, http://localhost:5000
+npm run dev               # The deployed backend is:   
+# https://repo2-1ext.onrender.com 
 ```
 
 To try it out with data immediately:
@@ -45,8 +46,9 @@ bypassing it.
 ```bash
 cd client
 npm install
-cp .env.example .env      # VITE_API_BASE_URL, defaults to http://localhost:5000/api
-npm run dev                 # http://localhost:5173
+cp .env.example .env      # The default API points to the deployed backend:
+# VITE_API_BASE_URL, defaults to https://repo2-1ext.onrender.com/api 
+npm run dev                 # Frontend: http://localhost:5173
 ```
 
 ### Production build
@@ -185,3 +187,12 @@ the built frontend (Vercel, Netlify, Render static site). Rough outline:
 - **Automated tests** — omitted for time; the natural next additions would be a
   supertest suite against `buildFilter()`'s query construction (it's the piece most
   worth locking down against regressions) and a component test for `LogTable` sorting.
+
+## Technical Decisions
+
+- React + Vite: Fast development experience and efficient frontend build.
+- Express.js: Lightweight REST API framework for Node.js.
+- MongoDB (Mongoose): Flexible NoSQL database suitable for audit log data.
+- Axios: Handles communication between the React frontend and Express backend.
+- Render: Hosts the backend API.
+- Vercel: Hosts the frontend application.
